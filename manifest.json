@@ -17,6 +17,15 @@
         }
     ],
     "permissions": [
-        "https://api.openai.com/v1/chat/completions"
-    ]
+        "https://api.openai.com/v1/chat/completions",
+        "storage"
+    ],
+    "options_ui": {
+        "page": "options.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "arc25275@gmail.com"
+        }
+    }
 }
