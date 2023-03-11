@@ -22,7 +22,7 @@ You can clone this repository on your own, and add it to firefox by visiting [ab
 ![image](https://user-images.githubusercontent.com/55003876/223320028-a48c9bff-1142-4828-b3d7-09e414dbe368.png)
 - Go to about:debugging, click on This Firefox, and click on Load Temporary Addon
 ![image](https://user-images.githubusercontent.com/55003876/223320137-fd65451c-c914-4fe9-83aa-508f8b8fc729.png)
-
+- Go to about:config and set xpinstall.signatures.required to false (This will allow the extension to stay after reloads)
 
 Add your token to extension settings:
 
