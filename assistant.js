@@ -6,7 +6,7 @@ var payload = JSON.stringify({
 			content:
 				"You are an extension that creates useful information to be shown below a search at google.com. Use extra whitespace only if needed.",
 		},
-		{ role: "user", content: document.getElementsByTagName("input")[0].value },
+		{ role: "user", content: document.title },
 	],
 });
 
