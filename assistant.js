@@ -1,15 +1,3 @@
-var payload = JSON.stringify({
-	model: "gpt-3.5-turbo",
-	messages: [
-		{
-			role: "system",
-			content:
-				"You are an extension that creates useful information to be shown below a search at google.com. Use extra whitespace only if needed.",
-		},
-		{ role: "user", content: document.title },
-	],
-});
-
 function onError(error) {
 	console.log(`Error: ${error}`);
 }
@@ -37,10 +25,6 @@ addAnimation(`
     `);
 
 function onGot(item) {
-	let token = "";
-	if (item.token) {
-		token = item.token;
-	}
 	var outerdiv = `
 	<div id="assistant" style="white-space: pre-wrap;background-color: #444654; width:50%; border-radius:10px; margin-bottom: 2.5%; padding:10px; position:relative;"> 
 	<div id="title" style="background-color:#3f3f46; height:53px; width: fit-content; border-radius:10px; display:flex; position:absolute; top:9px; left:1%; margin-bottom:2em;">
@@ -49,12 +33,25 @@ function onGot(item) {
 	</div>
 	<div id="text" style="margin-top:10px;"></div>
 	</div>`;
+	console.log(item.token);
+	console.log(item.prompt);
 	document.getElementById("extabar").innerHTML += outerdiv;
+	var payload = JSON.stringify({
+		model: "gpt-3.5-turbo",
+		messages: [
+			{
+				role: "system",
+				content: item.prompt,
+			},
+			{ role: "user", content: document.title },
+		],
+	});
+
 	fetch("https://api.openai.com/v1/chat/completions", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
-			Authorization: `Bearer ${token}`,
+			Authorization: `Bearer ${item.token}`,
 		},
 		body: payload,
 	})
@@ -75,5 +72,5 @@ function onGot(item) {
 		});
 }
 
-const getting = browser.storage.local.get("token");
+const getting = browser.storage.local.get(["token", "prompt"]);
 getting.then(onGot, onError);
