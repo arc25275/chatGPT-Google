@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "ChatGpt Assistant",
-    "version": "1.1",
+    "version": "1.2",
     "description": "Adds a ChatGpt response to google searches",
     "icons": {
         "48": "icons/chatgpt.png"
