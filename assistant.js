@@ -35,7 +35,7 @@ function onGot(item) {
 	</div>`;
 	console.log(item.token);
 	console.log(item.prompt);
-	document.getElementById("extabar").innerHTML += outerdiv;
+	document.getElementById("appbar").innerHTML += outerdiv;
 	var payload = JSON.stringify({
 		model: "gpt-3.5-turbo",
 		messages: [
